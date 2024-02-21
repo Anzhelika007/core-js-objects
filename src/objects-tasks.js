@@ -115,8 +115,8 @@ function isEmptyObject(obj) {
  *    immutableObj.newProp = 'new';
  *    console.log(immutableObj) => {a: 1, b: 2}
  */
-function makeImmutable(/* obj */) {
-  throw new Error('Not implemented');
+function makeImmutable(obj) {
+  return Object.freeze(obj);
 }
 
 /**
@@ -357,28 +357,29 @@ function group(array, keySelector, valueSelector) {
  */
 
 const cssSelectorBuilder = {
-  element(/* value */) {
-    throw new Error('Not implemented');
+  result: '',
+  element(value) {
+    return `${this.result}${value}`;
   },
 
-  id(/* value */) {
-    throw new Error('Not implemented');
+  id(value) {
+    return `${this.result}#${value}`;
   },
 
-  class(/* value */) {
-    throw new Error('Not implemented');
+  class(value) {
+    return `${this.result}.${value}`;
   },
 
-  attr(/* value */) {
-    throw new Error('Not implemented');
+  attr(value) {
+    return `${this.result}[${value}]`;
   },
 
-  pseudoClass(/* value */) {
-    throw new Error('Not implemented');
+  pseudoClass(value) {
+    return `${this.result}:${value}`;
   },
 
-  pseudoElement(/* value */) {
-    throw new Error('Not implemented');
+  pseudoElement(value) {
+    return `${this.result}::${value}`;
   },
 
   combine(/* selector1, combinator, selector2 */) {
